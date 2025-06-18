@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     :root {
-      --bg-light: linear-gradient(to right, #fceabb, #f8b500);
+      --bg-light: linear-gradient(to right, #d0eaff, #a6d3ff);
       --bg-dark: linear-gradient(to right, #1a1a1a, #333);
       --text-light: #333;
       --text-dark: #f4f4f4;
@@ -43,15 +43,19 @@
       padding-bottom: 5px;
     }
     .project-card {
-      background-color: #fffaf4;
-      border: 1px solid #fcd5b5;
+      background-color: var(--project-light-bg);
+      border: 1px solid var(--project-light-border);
       padding: 15px;
       margin-bottom: 20px;
       border-radius: 8px;
-      transition: transform 0.2s;
+      transition: transform 0.2s, background-color 0.3s, border 0.3s;
     }
     .project-card:hover {
       transform: scale(1.02);
+    }
+    body.dark-mode .project-card {
+      background-color: var(--project-dark-bg);
+      border: 1px solid var(--project-dark-border);
     }
     img.profile-pic {
       width: 160px;
