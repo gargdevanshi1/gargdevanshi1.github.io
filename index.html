@@ -6,87 +6,110 @@
   <title>Devanshi Garg | Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; }
-    .hero { padding: 60px 0; text-align: center; background-color: #ffffff; }
-    .section-title { margin-top: 40px; margin-bottom: 20px; font-weight: bold; }
-    .project-card { margin-bottom: 20px; }
-    .skills-list { columns: 2; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf6f0;
+      color: #333;
+    }
+    .hero {
+      padding: 60px 0;
+      text-align: center;
+      background-color: #fffaf4;
+    }
+    .section-title {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      border-bottom: 2px solid #ffd6cc;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .project-card {
+      background-color: #fff;
+      border: 1px solid #f4cccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    img.profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid #ffd6cc;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="hero">
+      <img src="your-photo.jpg" alt="Devanshi Garg" class="profile-pic" />
       <h1>Devanshi Garg</h1>
       <p class="lead">MSCS @ UC San Diego | Software & AI/ML Engineer</p>
-      <p>📍 San Diego, CA | 📧 <a href="mailto:d2garg@ucsd.edu">d2garg@ucsd.edu</a><br>
-        <a href="https://linkedin.com/in/gargdevanshi" target="_blank">LinkedIn</a> | <a href="https://github.com/gargdevanshi1" target="_blank">GitHub</a>
+      <p>📍 San Diego, CA | 📞 (858) 396 4340 | 📧 <a href="mailto:d2garg@ucsd.edu">d2garg@ucsd.edu</a><br>
+        <a href="https://linkedin.com/in/garg-devanshi" target="_blank">LinkedIn</a> | <a href="https://github.com/gargdevanshi1" target="_blank">GitHub</a>
       </p>
     </div>
 
-    <h3 class="section-title">Education</h3>
+    <h3 class="section-title">Work Experience</h3>
     <ul>
-      <li><strong>MS in Computer Science & Engineering</strong>, UC San Diego, GPA: 4.0 (Sep '24 – Present)</li>
-      <li><strong>B.Tech in Computer Science & Engineering</strong>, PEC, GPA: 3.93/4.0 (Aug '18 – May '22)</li>
-    </ul>
-
-    <h3 class="section-title">Skills</h3>
-    <div class="skills-list">
-      <ul>
-        <li>Languages: Python, Java, C/C++, SQL, HTML/CSS, Bash, JavaScript</li>
-        <li>Frameworks: Spring Boot, Django, PyTorch, scikit-learn, Keras, Bootstrap, gRPC</li>
-        <li>Systems: Distributed Systems, Microservices, REST APIs, SDLC, UML</li>
-        <li>AI/ML: Transformers, NLP, Adversarial Learning, Vision-Language Models</li>
-        <li>Tools: Git, Jira, Terraform, JFrog, Control-M, CyberArk, Heroku, Linux</li>
-        <li>Soft Skills: Collaboration, Detail-oriented, Agile, Leadership</li>
-      </ul>
-    </div>
-
-    <h3 class="section-title">Experience</h3>
-    <ul>
-      <li><strong>Senior Analyst, Deutsche Bank</strong> (Jul '22 – Aug '24)<br>
-        Backend microservices, GCS automation, Angular migration, UI redesign, security hardening.
+      <li><strong>Senior Analyst, Deutsche Bank</strong> – Pune, India (Jul 2022 – Aug 2024)<br>
+        - Led development of backend microservices in Spring Boot, automating GCP data pipelines and Terraform deployments.<br>
+        - Migrated legacy frontend to Angular with 80% test coverage; implemented secure file transfer with GCS.<br>
+        - Enhanced Java-Python-ControlM screening workflows and automated SQL reporting with Python.<br>
+        - Strengthened application security using JFrog for OSS compliance and vulnerability management.
       </li>
-      <li><strong>FinTech Intern, J.P. Morgan Chase & Co.</strong> (Jan '21 – Jun '21)<br>
-        Web scraping, QGIS plugin, data automation saving 1750+ annual hours.
+      <li><strong>FinTech Intern, J.P. Morgan Chase & Co.</strong> – Mumbai, India (Jan 2021 – Jun 2021)<br>
+        - Automated data workflows using Python for web/PDF scraping and dashboard generation.<br>
+        - Built QGIS geospatial plugin saving 100+ hours; automated PPT generation and saved 1750+ hours annually.
       </li>
     </ul>
 
     <h3 class="section-title">Research</h3>
     <ul>
-      <li><strong>ARPA-H ADAPT</strong> (May '25 – Present): Cancer-specific transformer using gene/protein embeddings.</li>
-      <li><strong>SMILES Pathway Predictions</strong> (Sep '24 – Apr '25): Vicuna-13B + multimodal embedding fusion.</li>
-      <li><strong>Wikipedia for the Blind</strong> – Presented at ICCCNT'23: NLP-driven accessibility reader with abstractive summaries.</li>
+      <li><strong>ARPA-H ADAPT (May 2025 – Present)</strong>: Self-supervised transformer using variant/protein/gene graphs for cancer prediction.</li>
+      <li><strong>SMILES Pathway Prediction (Sep 2024 – Apr 2025)</strong>: Vicuna-13B + multimodal feature fusion for biological pathways.</li>
+      <li><strong>Wikipedia for the Blind (ICCCNT 2023)</strong>: Voice-based navigation with NLP summarization and hyperlink ranking.</li>
     </ul>
 
-    <h3 class="section-title">Projects</h3>
+    <h3 class="section-title">Key Projects</h3>
     <div class="project-card">
-      <strong>TritonTube – Distributed Video Storage</strong> | <a href="#">Code</a><br>
-      Scalable backend using consistent hashing and gRPC for dynamic video storage.
+      <strong>TritonTube</strong> – Distributed video storage with gRPC and consistent hashing<br>
+      <a href="https://github.com/gargdevanshi1/tritontube-network">GitHub</a>
     </div>
     <div class="project-card">
-      <strong>COVID-19 Severity Classifier</strong> | <a href="#">Code</a><br>
-      Random Forest on mass-spec data with 100k+ peptides, outperforming literature baselines.
+      <strong>COVID-19 Classifier</strong> – Random forest on 100k+ peptide mass-spectrometry features<br>
+      <a href="https://github.com/gargdevanshi1/classification-COVID19-sera">GitHub</a>
     </div>
     <div class="project-card">
-      <strong>Goal-Directed Navigation Agent</strong> | <a href="#">Code</a><br>
-      GPT-4o-mini reasoning over UE5 vision input for real-world waypoint control.
+      <strong>Vision-Language Navigation</strong> – GPT-4o + UE5 simulation agent<br>
+      <a href="https://github.com/Elonian/ZENITH">GitHub</a>
     </div>
     <div class="project-card">
-      <strong>Gender-Inclusive Machine Translation</strong> | <a href="#">Code</a><br>
-      Adversarial MT model to reduce binary bias in Hindi-English translations.
+      <strong>Fair Machine Translation</strong> – Adversarial bias mitigation in Hindi-English MT<br>
+      <a href="https://github.com/gargdevanshi1/fair-machine-translation">GitHub</a>
+    </div>
+    <div class="project-card">
+      <strong>CogniChat</strong> – Personal finance chatbot with NLP + LSTM<br>
+      <a href="https://github.com/gargdevanshi1/FinancialBot">GitHub</a>
+    </div>
+    <div class="project-card">
+      <strong>Interview Forum</strong> – Django-based experience archive with admin moderation<br>
+      <a href="https://github.com/gargdevanshi1/MyIntExp">GitHub</a>
     </div>
 
-    <h3 class="section-title">Leadership & Community</h3>
+    <h3 class="section-title">Leadership</h3>
     <ul>
-      <li>Secretary, Women Empowerment Cell – PEC</li>
-      <li>Member, ACM-CSS and National Service Scheme – Led technical workshops and outreach</li>
+      <li>Secretary, Women Empowerment Cell – Led Women in Tech & outreach with Unnat Bharat Abhiyaan</li>
+      <li>Member, ACM-CSS & NSS – Delivered AI workshops, mentored underprivileged students</li>
     </ul>
 
     <h3 class="section-title">Certifications</h3>
     <ul>
-      <li>Neural Networks and Deep Learning (deeplearning.ai)</li>
-      <li>TensorFlow for AI/ML/DL (deeplearning.ai)</li>
-      <li>Managing Big Data with MySQL (Duke University)</li>
+      <li><a href="http://coursera.org/verify/XEHYC6U7E88H">Introduction to TensorFlow for AI (deeplearning.ai)</a></li>
+      <li><a href="http://coursera.org/verify/4BP3ELG4AL3C">Neural Networks and Deep Learning (deeplearning.ai)</a></li>
+      <li><a href="http://coursera.org/verify/FLT7JTMB483E">Managing Big Data with MySQL (Duke University)</a></li>
     </ul>
   </div>
 </body>
