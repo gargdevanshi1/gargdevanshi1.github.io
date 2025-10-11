@@ -3,185 +3,1504 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Devanshi Garg | Portfolio</title>
+  <title>Devanshi Garg | AI/ML & Software Engineer</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-light: linear-gradient(to right, #d0eaff, #a6d3ff);
-      --bg-dark: linear-gradient(to right, #1a1a1a, #333);
-      --text-light: #333;
-      --text-dark: #f4f4f4;
+      --primary-color: #2563eb;
+      --secondary-color: #7c3aed;
+      --accent-color: #f59e0b;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --bg-light: #f9fafb;
+      --bg-white: #ffffff;
+      --border-color: #e5e7eb;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-light);
-      color: var(--text-light);
-      scroll-behavior: smooth;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
+
     body.dark-mode {
-      background: var(--bg-dark);
+      --primary-color: #60a5fa;
+      --secondary-color: #a78bfa;
+      --accent-color: #fbbf24;
+      --text-dark: #f9fafb;
+      --text-light: #d1d5db;
+      --bg-light: #111827;
+      --bg-white: #1f2937;
+      --border-color: #374151;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-light);
       color: var(--text-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: all 0.3s ease;
     }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg-white);
+      box-shadow: var(--shadow-sm);
+      z-index: 1000;
+      padding: 1rem 0;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    .theme-toggle {
+      background: var(--bg-light);
+      border: 2px solid var(--border-color);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      border-color: var(--primary-color);
+    }
+
+    /* Hero Section */
     .hero {
-      padding: 60px 0;
+      background: var(--gradient-primary);
+      color: white;
+      padding: 5rem 0 6rem;
       text-align: center;
-      background-color: #fff5e6;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: background 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-    body.dark-mode .hero {
-      background-color: #2e2e2e;
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="1" fill="white" opacity="0.1"/></svg>');
+      opacity: 0.3;
     }
-    .section-title {
-      margin-top: 40px;
-      margin-bottom: 20px;
-      font-weight: 600;
-      border-bottom: 2px solid #ffa94d;
-      display: inline-block;
-      padding-bottom: 5px;
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
-    .project-card {
-      background-color: var(--project-light-bg);
-      border: 1px solid var(--project-light-border);
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      transition: transform 0.2s, background-color 0.3s, border 0.3s;
-    }
-    .project-card:hover {
-      transform: scale(1.02);
-    }
-    body.dark-mode .project-card {
-      background-color: var(--project-dark-bg);
-      border: 1px solid var(--project-dark-border);
-    }
-    img.profile-pic {
-      width: 160px;
-      height: 160px;
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 15px;
-      border: 4px solid #ffa94d;
+      border: 6px solid rgba(255,255,255,0.3);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
-    .icons img {
-      width: 28px;
-      height: 28px;
-      margin: 0 8px;
-      vertical-align: middle;
+
+    .profile-pic:hover {
+      transform: scale(1.05);
     }
-    .toggle-btn {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 999;
-      background: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 5px 10px;
-      cursor: pointer;
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
-    footer {
-      text-align: center;
-      padding: 20px;
+
+    .hero .lead {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      opacity: 0.95;
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .ucsd-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .ucsd-link:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+      color: white;
+    }
+
+    .ucsd-logo {
+      height: 24px;
+      width: 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .social-links a:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-3px);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Cards */
+    .card-custom {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-custom::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gradient-primary);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-color);
+    }
+
+    .card-custom:hover::before {
+      transform: scaleY(1);
+    }
+
+    .card-header-custom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .card-company {
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-date {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .card-location {
+      color: var(--text-light);
       font-size: 0.9rem;
-      color: #666;
+      margin-bottom: 1rem;
     }
-    .contact-form input, .contact-form textarea {
-      margin-bottom: 10px;
+
+    .card-custom ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card-custom ul li {
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .card-custom ul li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-color);
+    }
+
+    .skill-category h4 {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: var(--bg-light);
+      color: var(--text-dark);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--border-color);
+      transition: all 0.2s ease;
+    }
+
+    .skill-tag:hover {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+      transform: scale(1.05);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-color);
+    }
+
+    .project-card h4 {
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .project-card p {
+      color: var(--text-light);
+      flex-grow: 1;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: auto;
+    }
+
+    .btn-project {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-project:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateX(3px);
+    }
+
+    /* Blog Section */
+    .blog-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--secondary-color);
+    }
+
+    .blog-card h4 {
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-card h4 a {
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .blog-card h4 a:hover {
+      color: var(--secondary-color);
+    }
+
+    .blog-meta {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .blog-description {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .blog-tag {
+      display: inline-block;
+      background: var(--bg-light);
+      color: var(--secondary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-light);
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Certifications */
+    .cert-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .cert-item {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.2rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cert-item:hover {
+      border-color: var(--accent-color);
+      transform: translateX(5px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cert-item i {
+      color: var(--accent-color);
+      font-size: 1.5rem;
+    }
+
+    .cert-item a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .cert-item a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Modal/Side Panel */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 9998;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: block;
+    }
+
+    .side-panel {
+      position: fixed;
+      right: -600px;
+      top: 0;
+      width: 90%;
+      max-width: 600px;
+      height: 100vh;
+      background: var(--bg-white);
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+      overflow-y: auto;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 2rem;
+    }
+
+    .side-panel.active {
+      right: 0;
+    }
+
+    .side-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .close-panel {
+      background: var(--bg-light);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    .close-panel:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    .panel-content {
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    .panel-content h3 {
+      color: var(--text-dark);
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .panel-content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .panel-content ul li {
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .panel-content ul li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    .clickable-card {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .clickable-card::after {
+      content: 'Click to learn more →';
+      position: absolute;
+      bottom: 1rem;
+      right: 1.5rem;
+      color: var(--primary-color);
+      font-size: 0.85rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .clickable-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Logo styling */
+    .company-logo-box {
+      flex-shrink: 0;
+      width: 70px;
+      height: 70px;
+      background: white;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero .lead {
+        font-size: 1.1rem;
+      }
+
+      nav .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-header-custom {
+        flex-direction: column;
+      }
+
+      .side-panel {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Smooth scrolling offset for fixed nav */
+    html {
+      scroll-padding-top: 80px;
     }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Toggle Mode</button>
-
+  <!-- Navigation -->
+  <nav>
   <div class="container">
-    <div class="hero">
+      <div class="d-flex justify-content-between align-items-center">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#blogs">Blogs</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+        </ul>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
       <img src="devanshi.png" alt="Devanshi Garg" class="profile-pic" />
       <h1>Devanshi Garg</h1>
-      <p class="lead">MSCS @ UC San Diego <img src="https://images.app.goo.gl/xbKvaQzuX7q74Q8G8" alt="UCSD Logo" height="30"> | Software & AI/ML Engineer</p>
-      <p>📍 San Diego, CA | 📧 <a href="mailto:d2garg@ucsd.edu">d2garg@ucsd.edu</a></p>
-      <p class="icons">
-        <a href="https://linkedin.com/in/garg-devanshi" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" title="LinkedIn">
+      <p class="lead">
+        <a href="https://ucsd.edu/" target="_blank" class="ucsd-link">
+          <img src="ucsd_logo.png" alt="UCSD" style="height: 24px; margin-right: 0.5rem; vertical-align: middle;">
+          MSCS @ UC San Diego
         </a>
-        <a href="https://github.com/gargdevanshi1" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" title="GitHub">
+        <span style="margin: 0 0.5rem;">|</span>
+        AI/ML & Software Engineer
+      </p>
+      <p class="subtitle">
+        <i class="fas fa-map-marker-alt"></i> San Diego, CA
+      </p>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/garg-devanshi" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
         </a>
+        <a href="https://github.com/gargdevanshi1" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">Passionate about AI/ML and building scalable systems</p>
+      <div class="card-custom">
+        <p style="color: var(--text-light); font-size: 1.1rem; line-height: 1.8;">
+          I'm a Master's student in Computer Science at <strong>UC San Diego</strong> (GPA: 4.0/4.0), currently working as an AI/ML Engineer Intern at Good AI. 
+          With experience at Deutsche Bank and J.P. Morgan, I specialize in building intelligent systems, distributed architectures, and scalable backend solutions. 
+          My research focuses on transformer-based models for cancer genomics and multimodal learning for biological pathway prediction.
       </p>
     </div>
 
-    <h3 class="section-title">Work Experience</h3>
-    <ul>
-      <li><strong>Senior Analyst, Deutsche Bank</strong> – Pune, India (Jul 2022 – Aug 2024)<br>
-        - Led development of backend microservices in Spring Boot, automating GCP data pipelines and Terraform deployments.<br>
-        - Migrated legacy frontend to Angular with 80% test coverage; implemented secure file transfer with GCS.<br>
-        - Enhanced Java-Python-ControlM screening workflows and automated SQL reporting with Python.<br>
-        - Strengthened application security using JFrog for OSS compliance and vulnerability management.
-      </li>
-      <li><strong>FinTech Intern, J.P. Morgan Chase & Co.</strong> – Mumbai, India (Jan 2021 – Jun 2021)<br>
-        - Automated data workflows using Python for web/PDF scraping and dashboard generation.<br>
-        - Built QGIS geospatial plugin saving 100+ hours; automated PPT generation and saved 1750+ hours annually.
-      </li>
-    </ul>
+      <div class="mt-4">
+        <h3 style="color: var(--text-dark); font-weight: 600; margin-bottom: 1.5rem;">
+          <i class="fas fa-graduation-cap" style="color: var(--primary-color);"></i> Education
+        </h3>
+        <div class="card-custom">
+          <div style="display: flex; align-items: start; gap: 1.5rem;">
+            <div class="company-logo-box" style="background: white;">
+              <img src="ucsd_logo.png" alt="UCSD" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div style="flex: 1;">
+              <div class="card-header-custom">
+                <div>
+                  <div class="card-company">University of California, San Diego</div>
+                  <div class="card-title">Master of Science in Computer Science</div>
+                </div>
+                <div class="card-date">Sep 2024 – Present</div>
+              </div>
+              <p style="color: var(--text-light); margin-bottom: 0.5rem;"><strong>GPA:</strong> 4.0/4.0</p>
+              <p style="color: var(--text-light);"><strong>Relevant Coursework:</strong> Network Systems, Algorithm Design and Analysis, Probabilistic Reasoning & Learning, Statistical NLP, Recommender Systems, Machine Learning Theory, Machine Learning with Few Labels, Fair & Transparent ML</p>
+            </div>
+          </div>
+        </div>
 
-    <h3 class="section-title">Research</h3>
-    <ul>
-      <li><strong>ARPA-H ADAPT (May 2025 – Present)</strong>: Self-supervised transformer using variant/protein/gene graphs for cancer prediction.</li>
-      <li><strong>SMILES Pathway Prediction (Sep 2024 – Apr 2025)</strong>: Vicuna-13B + multimodal feature fusion for biological pathways.</li>
-      <li><strong>Wikipedia for the Blind (ICCCNT 2023)</strong>: Voice-based navigation with NLP summarization and hyperlink ranking.</li>
-    </ul>
+        <div class="card-custom">
+          <div style="display: flex; align-items: start; gap: 1.5rem;">
+            <div class="company-logo-box" style="background: white;">
+              <img src="pec_logo.png" alt="PEC" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div style="flex: 1;">
+              <div class="card-header-custom">
+                <div>
+                  <div class="card-company">Punjab Engineering College</div>
+                  <div class="card-title">B.Tech. in Computer Science and Engineering</div>
+                </div>
+                <div class="card-date">Aug 2018 – May 2022</div>
+              </div>
+              <p style="color: var(--text-light); margin-bottom: 0.5rem;"><strong>GPA:</strong> 3.93/4.0</p>
+              <p style="color: var(--text-light);"><strong>Relevant Coursework:</strong> Data Structures and Algorithms, Discrete Structures, Operating Systems, Database Management Systems, Machine Learning, Artificial Intelligence, Software Engineering</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h3 class="section-title">Key Projects</h3>
-    <div class="project-card">
-      <strong>TritonTube</strong> – Distributed video storage with gRPC and consistent hashing<br>
-      <a href="https://github.com/gargdevanshi1/tritontube-network">GitHub</a>
+  <!-- Experience Section -->
+  <section id="experience" class="section" style="background: var(--bg-light);">
+    <div class="container">
+      <h2 class="section-title">Where I've Worked</h2>
+      <p class="section-subtitle">From FinTech giants to AI startups</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        
+        <div class="card-custom clickable-card" onclick="openPanel('goodai')" style="text-align: center; padding: 2rem 1.5rem;">
+          <div class="company-logo-box" style="background: white; margin: 0 auto 1rem; width: 80px; height: 80px;">
+            <img src="goodai_logo.jpeg" alt="Good AI" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <h4 style="color: var(--text-dark); font-size: 1.1rem; margin-bottom: 0.3rem;">Good AI</h4>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.5rem;">AI/ML Engineer Intern</p>
+          <p style="color: var(--text-light); font-size: 0.85rem;">Jul 2025 – Present</p>
+        </div>
+
+        <div class="card-custom clickable-card" onclick="openPanel('db')" style="text-align: center; padding: 2rem 1.5rem;">
+          <div class="company-logo-box" style="background: white; margin: 0 auto 1rem; width: 80px; height: 80px;">
+            <img src="db_logo.png" alt="Deutsche Bank" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <h4 style="color: var(--text-dark); font-size: 1.1rem; margin-bottom: 0.3rem;">Deutsche Bank</h4>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.5rem;">Senior Analyst</p>
+          <p style="color: var(--text-light); font-size: 0.85rem;">Jul 2022 – Aug 2024</p>
+        </div>
+
+        <div class="card-custom clickable-card" onclick="openPanel('jpmorgan')" style="text-align: center; padding: 2rem 1.5rem;">
+          <div class="company-logo-box" style="background: white; margin: 0 auto 1rem; width: 80px; height: 80px;">
+            <img src="jpm_logo.png" alt="J.P. Morgan" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <h4 style="color: var(--text-dark); font-size: 1.1rem; margin-bottom: 0.3rem;">J.P. Morgan</h4>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.5rem;">FinTech Intern</p>
+          <p style="color: var(--text-light); font-size: 0.85rem;">Jan 2021 – Jun 2021</p>
+        </div>
+
+      </div>
     </div>
-    <div class="project-card">
-      <strong>COVID-19 Classifier</strong> – Random forest on 100k+ peptide mass-spectrometry features<br>
-      <a href="https://github.com/gargdevanshi1/classification-COVID19-sera">GitHub</a>
+  </section>
+
+  <!-- Research Section -->
+  <section id="research" class="section">
+    <div class="container">
+      <h2 class="section-title">Research Experience</h2>
+      <p class="section-subtitle">Advancing AI in healthcare and bioinformatics</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        
+        <div class="card-custom clickable-card" onclick="openPanel('arpah')" style="text-align: center; padding: 2rem 1.5rem;">
+          <div class="company-logo-box" style="background: white; margin: 0 auto 1rem; width: 80px; height: 80px;">
+            <img src="ucsdhealth_logo.png" alt="UCSD Health" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <h4 style="color: var(--text-dark); font-size: 1.1rem; margin-bottom: 0.3rem;">ARPA-H ADAPT</h4>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.5rem;">Cancer Genomics</p>
+          <p style="color: var(--text-light); font-size: 0.85rem;">May 2025 – Present</p>
+        </div>
+
+        <div class="card-custom clickable-card" onclick="openPanel('smiles')" style="text-align: center; padding: 2rem 1.5rem;">
+          <div class="company-logo-box" style="background: white; margin: 0 auto 1rem; width: 80px; height: 80px;">
+            <img src="ucsd_logo.png" alt="UCSD" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <h4 style="color: var(--text-dark); font-size: 1.1rem; margin-bottom: 0.3rem;">SMILES Pathway</h4>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.5rem;">Drug Discovery</p>
+          <p style="color: var(--text-light); font-size: 0.85rem;">Sep 2024 – Apr 2025</p>
+        </div>
+
+        <div class="card-custom clickable-card" onclick="openPanel('wikipedia')" style="text-align: center; padding: 2rem 1.5rem;">
+          <div class="company-logo-box" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); margin: 0 auto 1rem; width: 80px; height: 80px;">
+            <div style="font-size: 2.5rem;">📖</div>
+          </div>
+          <h4 style="color: var(--text-dark); font-size: 1.1rem; margin-bottom: 0.3rem;">Wikipedia for Blind</h4>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.5rem;">Accessibility Research</p>
+          <p style="color: var(--text-light); font-size: 0.85rem;">Published: ICCCNT 2023</p>
+        </div>
+
+      </div>
     </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section" style="background: var(--bg-light);">
+    <div class="container">
+      <h2 class="section-title">Key Projects</h2>
+      <p class="section-subtitle">Showcasing technical expertise across various domains</p>
+
+      <div class="projects-grid">
     <div class="project-card">
-      <strong>Vision-Language Navigation</strong> – GPT-4o + UE5 simulation agent<br>
-      <a href="https://github.com/Elonian/ZENITH">GitHub</a>
+          <h4><i class="fas fa-video" style="color: var(--primary-color);"></i> TritonTube</h4>
+          <p>Engineered a distributed, horizontally scalable video storage backend using consistent hashing. Designed custom gRPC-based protocols and built a fault-tolerant content service supporting dynamic node addition/removal with zero data loss.</p>
+          <div class="project-links">
+            <a href="https://github.com/gargdevanshi1/tritontube-network" target="_blank" class="btn-project">
+              <i class="fab fa-github"></i> View Code
+            </a>
     </div>
+        </div>
+
     <div class="project-card">
-      <strong>Fair Machine Translation</strong> – Adversarial bias mitigation in Hindi-English MT<br>
-      <a href="https://github.com/gargdevanshi1/fair-machine-translation">GitHub</a>
+          <h4><i class="fas fa-virus" style="color: var(--primary-color);"></i> COVID-19 Classifier</h4>
+          <p>Developed a binary classification model using RandomForestClassifier to predict COVID-19 severity from mass spectrometry data. Applied supervised feature selection on 100k+ peptide features, outperforming published benchmarks.</p>
+          <div class="project-links">
+            <a href="https://github.com/gargdevanshi1/classification-COVID19-sera" target="_blank" class="btn-project">
+              <i class="fab fa-github"></i> View Code
+            </a>
     </div>
+        </div>
+
     <div class="project-card">
-      <strong>CogniChat</strong> – Personal finance chatbot with NLP + LSTM<br>
-      <a href="https://github.com/gargdevanshi1/FinancialBot">GitHub</a>
+          <h4><i class="fas fa-robot" style="color: var(--primary-color);"></i> Vision-Language Navigation</h4>
+          <p>Built a vision-language-based navigation pipeline in UE5 simulation. Integrated GPT-4o-mini as a zero-shot waypoint planner with pixel-to-world coordinate transformations and closed-loop control for realistic navigation.</p>
+          <div class="project-links">
+            <a href="https://github.com/Elonian/ZENITH" target="_blank" class="btn-project">
+              <i class="fab fa-github"></i> View Code
+            </a>
     </div>
+        </div>
+
     <div class="project-card">
-      <strong>Interview Forum</strong> – Django-based experience archive with admin moderation<br>
-      <a href="https://github.com/gargdevanshi1/MyIntExp">GitHub</a>
+          <h4><i class="fas fa-language" style="color: var(--primary-color);"></i> Fair Machine Translation</h4>
+          <p>Developed an inclusive Hindi-English MT model combining data augmentation and adversarial learning to mitigate gender bias. Integrated Gradient Reversal Layer (GRL) in PyTorch for adversarial learning.</p>
+          <div class="project-links">
+            <a href="https://github.com/gargdevanshi1/fair-machine-translation" target="_blank" class="btn-project">
+              <i class="fab fa-github"></i> View Code
+            </a>
+    </div>
+        </div>
+
+    <div class="project-card">
+          <h4><i class="fas fa-gamepad" style="color: var(--primary-color);"></i> Battleship Solver</h4>
+          <p>Designed and implemented three strategies to sink randomly placed ships on an N×N board. Developed a Seek-Sink algorithm using checkerboard-style probing and BFS expansion to minimize moves.</p>
+          <div class="project-links">
+            <a href="https://github.com/gargdevanshi1/battleship" target="_blank" class="btn-project">
+              <i class="fab fa-github"></i> View Code
+            </a>
+    </div>
+        </div>
+
+    <div class="project-card">
+          <h4><i class="fas fa-comments-dollar" style="color: var(--primary-color);"></i> CogniChat</h4>
+          <p>Built a responsive web app with integrated chatbot for tracking personal finances. Developed intelligent expense categorization using NLP with neural networks trained on GloVe vectors and LSTM-based RNN for dialog flow.</p>
+          <div class="project-links">
+            <a href="https://github.com/gargdevanshi1/FinancialBot" target="_blank" class="btn-project">
+              <i class="fab fa-github"></i> View Code
+            </a>
+          </div>
     </div>
 
-    <h3 class="section-title">Leadership</h3>
-    <ul>
-      <li>Secretary, Women Empowerment Cell – Led Women in Tech & outreach with Unnat Bharat Abhiyaan</li>
-      <li>Member, ACM-CSS & NSS – Delivered AI workshops, mentored underprivileged students</li>
-    </ul>
+    <div class="project-card">
+          <h4><i class="fas fa-users" style="color: var(--primary-color);"></i> Interview Forum</h4>
+          <p>Collaborated to develop an interactive website deployed on Heroku for sharing interview experiences. Employed Postgres database with Django framework and implemented content validation requiring admin approval.</p>
+          <div class="project-links">
+            <a href="https://github.com/gargdevanshi1/MyIntExp" target="_blank" class="btn-project">
+              <i class="fab fa-github"></i> View Code
+            </a>
+          </div>
+    </div>
 
-    <h3 class="section-title">Certifications</h3>
-    <ul>
-      <li><a href="http://coursera.org/verify/XEHYC6U7E88H">Introduction to TensorFlow for AI (deeplearning.ai)</a></li>
-      <li><a href="http://coursera.org/verify/4BP3ELG4AL3C">Neural Networks and Deep Learning (deeplearning.ai)</a></li>
-      <li><a href="http://coursera.org/verify/FLT7JTMB483E">Managing Big Data with MySQL (Duke University)</a></li>
+    <div class="project-card">
+          <h4><i class="fas fa-file-alt" style="color: var(--primary-color);"></i> Handwriting OCR System</h4>
+          <p>Led a project focused on digitizing handwritten words for electronic search and editing. Utilized hybrid CNN-RNN architecture trained on IAM dataset, producing CTC outputs for sequence-related challenges.</p>
+          <div class="project-links">
+            <a href="https://github.com/gargdevanshi1/HandwritingOCR" target="_blank" class="btn-project">
+              <i class="fab fa-github"></i> View Code
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-subtitle">Comprehensive expertise across the tech stack</p>
+
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4><i class="fas fa-brain"></i> Algorithms</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Dynamic Programming</span>
+            <span class="skill-tag">Graph Algorithms</span>
+            <span class="skill-tag">Greedy</span>
+            <span class="skill-tag">Recursion</span>
+            <span class="skill-tag">Search</span>
+            <span class="skill-tag">Hashing</span>
+            <span class="skill-tag">Tree/Trie</span>
+            <span class="skill-tag">Queue/Stack</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-code"></i> Languages</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C/C++</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Bash</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-layer-group"></i> Frameworks & Libraries</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Angular</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">scikit-learn</span>
+            <span class="skill-tag">Keras</span>
+            <span class="skill-tag">Bootstrap</span>
+            <span class="skill-tag">gRPC</span>
+            <span class="skill-tag">Transformers (HF)</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-network-wired"></i> Systems & Architecture</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Distributed Systems</span>
+            <span class="skill-tag">Microservices</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">Consistent Hashing</span>
+            <span class="skill-tag">SDLC</span>
+            <span class="skill-tag">UML</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-tools"></i> Tools & DevOps</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Jira</span>
+            <span class="skill-tag">Terraform</span>
+            <span class="skill-tag">JFrog</span>
+            <span class="skill-tag">Control-M</span>
+            <span class="skill-tag">CyberArk</span>
+            <span class="skill-tag">VSCode</span>
+            <span class="skill-tag">Heroku</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">GCP</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-robot"></i> Artificial Intelligence</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Neural Networks</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">Adversarial Learning</span>
+            <span class="skill-tag">Transformers</span>
+            <span class="skill-tag">Vision-Language Models</span>
+            <span class="skill-tag">Multimodal Embeddings</span>
+            <span class="skill-tag">LLMs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blogs" class="section" style="background: var(--bg-light);">
+    <div class="container">
+      <h2 class="section-title">Recommended Reads</h2>
+      <p class="section-subtitle">Blogs and articles I find insightful</p>
+
+      <div class="blog-card">
+        <h4><a href="https://distill.pub/" target="_blank">Distill - Machine Learning Research</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> Machine Learning | Deep Learning | Interpretability</p>
+        <p class="blog-description">
+          Distill is dedicated to clear explanations of machine learning research. Features interactive visualizations and in-depth explorations of neural networks, transformers, and feature visualization.
+        </p>
+        <span class="blog-tag">AI Research</span>
+        <span class="blog-tag">Visualization</span>
+      </div>
+
+      <div class="blog-card">
+        <h4><a href="https://lilianweng.github.io/" target="_blank">Lil'Log by Lilian Weng</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> AI | Reinforcement Learning | NLP</p>
+        <p class="blog-description">
+          Comprehensive blog by OpenAI's VP of Research & Safety covering cutting-edge topics in AI including attention mechanisms, prompt engineering, RLHF, and diffusion models with clear mathematical explanations.
+        </p>
+        <span class="blog-tag">NLP</span>
+        <span class="blog-tag">LLMs</span>
+        <span class="blog-tag">RL</span>
+      </div>
+
+      <div class="blog-card">
+        <h4><a href="https://colah.github.io/" target="_blank">colah's blog - Neural Networks</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> Deep Learning | Neural Networks</p>
+        <p class="blog-description">
+          Christopher Olah's highly visual explanations of neural networks, including LSTMs, CNNs, and neural network visualization. Known for making complex concepts accessible through intuitive diagrams.
+        </p>
+        <span class="blog-tag">Deep Learning</span>
+        <span class="blog-tag">Visualization</span>
+      </div>
+
+      <div class="blog-card">
+        <h4><a href="https://karpathy.github.io/" target="_blank">Andrej Karpathy's Blog</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> AI | Computer Vision | Training Neural Networks</p>
+        <p class="blog-description">
+          Insights from former Tesla AI Director and OpenAI founding member. Covers practical aspects of training neural networks, computer vision, and the philosophy of building AI systems.
+        </p>
+        <span class="blog-tag">Computer Vision</span>
+        <span class="blog-tag">Neural Networks</span>
+      </div>
+
+      <div class="blog-card">
+        <h4><a href="https://ai.googleblog.com/" target="_blank">Google AI Blog</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> AI Research | Product Applications</p>
+        <p class="blog-description">
+          Official blog featuring the latest research and product developments from Google AI. Covers topics from transformers and LLMs to healthcare applications and responsible AI.
+        </p>
+        <span class="blog-tag">AI Research</span>
+        <span class="blog-tag">Industry</span>
+      </div>
+
+      <div class="blog-card">
+        <h4><a href="https://www.deeplearning.ai/the-batch/" target="_blank">The Batch by deeplearning.ai</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> AI News | Weekly Newsletter</p>
+        <p class="blog-description">
+          Andrew Ng's weekly newsletter covering AI news, research breakthroughs, career advice, and practical insights. A great way to stay updated on the rapidly evolving AI landscape.
+        </p>
+        <span class="blog-tag">AI News</span>
+        <span class="blog-tag">Career</span>
+      </div>
+
+      <div class="blog-card">
+        <h4><a href="https://blog.ml.cmu.edu/" target="_blank">CMU Machine Learning Blog</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> Machine Learning Research | Academic</p>
+        <p class="blog-description">
+          Research blog from Carnegie Mellon University's Machine Learning Department. Features cutting-edge research in deep learning, NLP, computer vision, and fairness in ML.
+        </p>
+        <span class="blog-tag">Academic Research</span>
+        <span class="blog-tag">Fair ML</span>
+      </div>
+
+      <div class="blog-card">
+        <h4><a href="https://ruder.io/" target="_blank">Sebastian Ruder - NLP Research</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> NLP | Transfer Learning | Multilingual NLP</p>
+        <p class="blog-description">
+          Deep dives into Natural Language Processing research, transfer learning, and multilingual models. Known for comprehensive surveys and clear explanations of NLP advancements.
+        </p>
+        <span class="blog-tag">NLP</span>
+        <span class="blog-tag">Transfer Learning</span>
+      </div>
+
+      <div class="blog-card">
+        <h4><a href="https://blog.acolyer.org/" target="_blank">The Morning Paper</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> Computer Science | Systems | Distributed Systems</p>
+        <p class="blog-description">
+          Daily summaries of interesting and influential computer science papers. Covers distributed systems, databases, machine learning, and software engineering research.
+        </p>
+        <span class="blog-tag">Systems</span>
+        <span class="blog-tag">Research Papers</span>
+      </div>
+
+      <div class="blog-card">
+        <h4><a href="https://neptune.ai/blog" target="_blank">Neptune.ai Blog - MLOps</a></h4>
+        <p class="blog-meta"><i class="fas fa-tag"></i> MLOps | ML Engineering | Best Practices</p>
+        <p class="blog-description">
+          Practical guides on ML engineering, experiment tracking, model deployment, and MLOps best practices. Great resource for production machine learning.
+        </p>
+        <span class="blog-tag">MLOps</span>
+        <span class="blog-tag">Engineering</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <p class="section-subtitle">Continuous learning and skill development</p>
+
+      <div class="cert-list">
+        <div class="cert-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <a href="http://coursera.org/verify/XEHYC6U7E88H" target="_blank">
+              Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning
+            </a>
+            <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">deeplearning.ai</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <a href="http://coursera.org/verify/4BP3ELG4AL3C" target="_blank">
+              Neural Networks and Deep Learning
+            </a>
+            <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">deeplearning.ai</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <a href="http://coursera.org/verify/FLT7JTMB483E" target="_blank">
+              Managing Big Data with MySQL
+            </a>
+            <p style="color: var(--text-light); font-size: 0.9rem; margin: 0;">Duke University</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Section -->
+  <section class="section" style="background: var(--bg-light);">
+    <div class="container">
+      <h2 class="section-title">Leadership & Community</h2>
+      <p class="section-subtitle">Giving back and empowering others</p>
+
+      <div class="card-custom">
+        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">
+          <i class="fas fa-users"></i> Secretary, Women Empowerment Cell - Punjab Engineering College
+        </h4>
+        <ul>
+          <li>Contributed to the Women in Tech initiative to foster gender diversity in technology by facilitating collaboration with Computer Science Society (CSS)</li>
+          <li>Contributed to Unnat Bharat Abhiyaan by conducting surveys on family dynamics, occupation, and monthly income in rural Chandigarh villages</li>
+          <li>Organized surveys to assess awareness and access to daily hygiene products for more than 200 rural women</li>
     </ul>
-    
-    <footer class="mt-5">
-      <hr>
-      <p>&copy; 2025 Devanshi Garg. All rights reserved.</p>
+      </div>
+
+      <div class="card-custom">
+        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">
+          <i class="fas fa-hand-holding-heart"></i> Member, National Service Scheme - Punjab Engineering College
+        </h4>
+    <ul>
+          <li>Engaged in Chandigarh Administration's Pulse Polio Survey, ensuring efficient distribution of polio drops to children in 100+ households</li>
+          <li>Actively taught underprivileged students as part of Aabha initiative, mentoring 5 students for 6 months</li>
+    </ul>
+  </div>
+
+      <div class="card-custom">
+        <h4 style="color: var(--primary-color); margin-bottom: 1rem;">
+          <i class="fas fa-laptop-code"></i> Member, ACM-CSS - Punjab Engineering College
+        </h4>
+        <ul>
+          <li>Led hands-on workshops on programming languages, tools, and frameworks to help students gain practical skills</li>
+          <li>Delivered a session on Artificial Intelligence and NLP applications to nearly 100 incoming engineering students during orientation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+        <strong>Let's Connect!</strong>
+      </p>
+      <p>
+        <a href="https://linkedin.com/in/garg-devanshi" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> | 
+        <a href="https://github.com/gargdevanshi1" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </p>
+      <hr style="margin: 2rem 0; opacity: 0.2;">
+      <p style="font-size: 0.9rem;">&copy; 2025 Devanshi Garg. All rights reserved.</p>
+    </div>
     </footer>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closePanel()"></div>
+
+  <!-- Side Panel -->
+  <div class="side-panel" id="sidePanel">
+    <div class="side-panel-header">
+      <div>
+        <h2 id="panelTitle" style="color: var(--text-dark); margin: 0;"></h2>
+        <p id="panelSubtitle" style="color: var(--text-light); margin: 0.5rem 0 0 0;"></p>
+      </div>
+      <button class="close-panel" onclick="closePanel()" aria-label="Close panel">×</button>
+    </div>
+    <div class="panel-content" id="panelContent"></div>
   </div>
 
   <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
+    // Panel content data
+    const panelData = {
+      goodai: {
+        title: 'Good AI',
+        subtitle: 'AI/ML Engineer Intern | Jul 2025 – Present',
+        content: `
+          <h3>🚀 About the Company</h3>
+          <p>Good AI is an innovative AI startup based in Palo Alto, California, focused on revolutionizing clinical research through intelligent automation and data systems.</p>
+          
+          <h3>💼 My Role</h3>
+          <p>Collaborating with the engineering team to develop AI-driven solutions for clinical research workflows. Working on natural language processing systems and data automation tools that help researchers work more efficiently.</p>
+        `
+      },
+      db: {
+        title: 'Deutsche Bank',
+        subtitle: 'Senior Analyst | Jul 2022 – Aug 2024',
+        content: `
+          <h3>🏦 About the Company</h3>
+          <p>Deutsche Bank is one of the world's leading global investment banks with operations in over 58 countries. The bank provides commercial and investment banking services worldwide.</p>
+          
+          <h3>💼 My Experience</h3>
+          <p>Worked as a Senior Analyst in Pune, India for 2 years. Collaborated with cross-functional teams on FinTech infrastructure projects, backend microservices, and frontend development initiatives. Gained experience with enterprise-scale systems and cloud technologies.</p>
+        `
+      },
+      jpmorgan: {
+        title: 'J.P. Morgan Chase & Co.',
+        subtitle: 'FinTech Intern | Jan 2021 – Jun 2021',
+        content: `
+          <h3>🏦 About the Company</h3>
+          <p>J.P. Morgan is one of the largest and most respected financial institutions globally, providing investment banking, financial services, and asset management solutions.</p>
+          
+          <h3>💼 My Experience</h3>
+          <p>Completed a 6-month internship in Mumbai, India. Worked with the technology division on automation projects and data visualization tools. Collaborated with teams across different departments to improve operational efficiency.</p>
+        `
+      },
+      arpah: {
+        title: 'ARPA-H ADAPT',
+        subtitle: 'Cancer Genomics Research | May 2025 – Present',
+        content: `
+          <h3>🧬 About the Lab</h3>
+          <p>Working with <strong>Ideker Lab</strong> at UC San Diego on ARPA-H ADAPT program. The Ideker Lab is renowned for pioneering work in systems biology and cancer genomics.</p>
+          
+          <h3>🔬 Research Focus</h3>
+          <p>Collaborating on cancer genomics research using transformer-based models and bioinformatics approaches. Working with large-scale genomic datasets to advance precision medicine.</p>
+        `
+      },
+      smiles: {
+        title: 'SMILES Pathway Predictions',
+        subtitle: 'Drug Discovery Research | Sep 2024 – Apr 2025',
+        content: `
+          <h3>🧪 About the Research</h3>
+          <p>Research project at UC San Diego focused on applying machine learning to drug discovery and molecular biology.</p>
+          
+          <h3>🔬 Approach</h3>
+          <p>Collaborated on developing multimodal learning systems combining graph neural networks and language models to analyze molecular structures and predict biological pathways.</p>
+        `
+      },
+      wikipedia: {
+        title: 'Wikipedia for the Blind',
+        subtitle: 'Published: ICCCNT 2023',
+        content: `
+          <h3>📖 Published Research</h3>
+          <p><strong>Conference:</strong> 2023 14th International Conference on Computing Communication and Networking Technologies (ICCCNT)</p>
+          
+          <h3>🎯 Overview</h3>
+          <p>Published research focusing on accessibility technology for visually impaired users. Developed a voice-command based screen reader for Wikipedia using NLP and deep learning approaches.</p>
+        `
+      }
+    };
+
+    function openPanel(id) {
+      const data = panelData[id];
+      if (!data) return;
+
+      document.getElementById('panelTitle').textContent = data.title;
+      document.getElementById('panelSubtitle').textContent = data.subtitle;
+      document.getElementById('panelContent').innerHTML = data.content;
+
+      document.getElementById('modalOverlay').classList.add('active');
+      document.getElementById('sidePanel').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
+
+    function closePanel() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.getElementById('sidePanel').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Theme Toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const themeIcon = document.querySelector('.theme-icon');
+      if (document.body.classList.contains('dark-mode')) {
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Load saved theme
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.theme-icon').textContent = '☀️';
+      }
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Add animation to elements as they come into view
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.card-custom, .project-card, .skill-category, .blog-card').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Close panel with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closePanel();
+        }
+      });
+    });
   </script>
 </body>
 </html>
